@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
    MOBILE NAVIGATION
    ================================== */
 
-   function initMobileMenu() {
+function initMobileMenu() {
     const mobileToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileToggle && navMenu) {
         // Toggle mobile menu
         mobileToggle.addEventListener('click', function(e) {
-            e.stopPropagation(); // evita que o clique borre ao clicar no botão
+            e.stopPropagation();
             mobileToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
 
             if (navMenu.classList.contains('active')) {
-                addGlitchEffect(navMenu, 300); // efeito VHS ao abrir
+                addGlitchEffect(navMenu, 300);
             }
         });
 
@@ -153,7 +153,7 @@ function initVHSEffects() {
     if (vhsBackground) {
         // Random VHS glitch intervals
         setInterval(() => {
-            if (Math.random() < 0.3) { // 10% chance every interval
+            if (Math.random() < 0.3) {
                 addVHSGlitch();
             }
         }, 500);
@@ -185,7 +185,7 @@ function addVHSGlitch() {
                 vhsBackground.style.filter = '';
                 vhsBackground.style.transform = '';
             }, 80);
-        }, i * 100); // 100ms entre cada relâmpago
+        }, i * 100);
     }
 }
 
@@ -254,7 +254,7 @@ function initGlitchEffects() {
     
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', function() {
-            if (Math.random() < 0.3) { // 30% chance
+            if (Math.random() < 0.3) {
                 addGlitchEffect(this, 150);
             }
         });
@@ -482,7 +482,7 @@ window.addEventListener('scroll', function() {
     }
     
     // Add random VHS effects during scroll
-    if (Math.random() < 0.05) { // 5% chance
+    if (Math.random() < 0.05) {
         addStaticEffect(100);
     }
 });
@@ -529,13 +529,13 @@ function activateHorrorMode() {
     
     // Show easter egg message
     setTimeout(() => {
-        alert('🎸 HORROR MODE ACTIVATED! 🎸\nThe spirits of the 80s have been awakened...');
+        console.log(' HORROR MODE ACTIVATED! \nThe spirits have been awakened...');
     }, 1000);
 }
 
 // Random ambient effects
 setInterval(() => {
-    if (Math.random() < 0.02) { // 2% chance every 5 seconds
+    if (Math.random() < 0.02) {
         const randomElement = document.querySelector(
             Math.random() < 0.5 ? '.section-title' : '.hero-title'
         );
@@ -579,7 +579,7 @@ function throttle(func, limit) {
 // Performance optimized scroll handler
 const optimizedScrollHandler = throttle(function() {
     // Scroll-based effects here
-}, 16); // ~60fps
+}, 16);
 
 window.addEventListener('scroll', optimizedScrollHandler);
 
@@ -628,16 +628,62 @@ document.head.appendChild(style);
 
 console.log('🎸 All interactive effects initialized - Ready to rock! 🎸');
 
-const player = document.getElementById("albumPlayer");
-const playButton = document.querySelector(".play-button");
+// Audio player functions
+const player = document.getElementById('albumPlayer');
+const playButton = document.querySelector('.play-button');
 
-function togglePlay() {
+function togglePlay(event) {
+    if (event) event.stopPropagation();
+
+    if (!player) return;
+
+    const tl = document.getElementById('abismoTracks');
+    const now = document.getElementById('nowPlayingAbismo');
+
     if (player.paused) {
         player.play();
-        playButton.textContent = "⏸"; // troca para pause
+        if (tl) tl.style.display = 'block';
+        if (now) now.textContent = 'Você está ouvindo: Irvin - Funeral';
+        if (playButton) playButton.textContent = '⏸';
     } else {
         player.pause();
-        playButton.textContent = "▶"; // volta para play
+        if (playButton) playButton.textContent = '▶';
     }
 }
 
+// Toca faixa específica
+function playTrack(src, title) {
+    if (!player) return;
+    player.src = src;
+    player.play();
+
+    const now = document.getElementById('nowPlayingAbismo');
+    if (now) now.textContent = 'Você está ouvindo: ' + title;
+
+    const tl = document.getElementById('abismoTracks');
+    if (tl) tl.style.display = 'block';
+
+    if (playButton) playButton.textContent = '⏸';
+}
+
+// Modal do álbum
+function openAlbumModal() {
+    document.getElementById('albumModal').style.display = 'block';
+}
+
+function closeAlbumModal() {
+    document.getElementById('albumModal').style.display = 'none';
+}
+
+// Fecha modal ao clicar fora
+window.onclick = function(event) {
+    const modal = document.getElementById('albumModal');
+    if (event.target === modal) modal.style.display = 'none';
+}
+
+// Alterna exibição da lista de faixas do álbum A.B.I.S.M.O
+function toggleTrackList() {
+    const tl = document.getElementById('abismoTracks');
+    if (!tl) return;
+    tl.style.display = (tl.style.display === 'block') ? 'none' : 'block';
+}

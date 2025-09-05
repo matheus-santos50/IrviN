@@ -20,15 +20,10 @@
 </head>
 <body>
     <!-- VHS Static Background Animation Container -->
-    <video class="bg-video" ...></video>
-<div class="vhs-background">
-    <div class="static-overlay"></div>
-    <div class="scanlines"></div>
-</div>
-<div class="hero-container">
-    ...
-</div>
-
+    <div class="vhs-background" id="vhsBackground">
+        <div class="static-overlay"></div>
+        <div class="scanlines"></div>
+    </div>
 
     <!-- Navigation Header -->
     <header class="main-header" id="mainHeader">
@@ -63,10 +58,10 @@
         <!-- Hero Section -->
         <section id="home" class="hero-section">
             <!-- Vídeo de Fundo -->
-    <video class="bg-video" autoplay muted loop>
-        <source src="videos/background.mp4" type="video/mp4">
-        Seu navegador não suporta vídeo.
-    </video>
+            <video class="bg-video" autoplay muted loop>
+                <source src="videos/background.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo.
+            </video>
             <div class="hero-container">
                 <div class="hero-content">
                     <h1 class="hero-title glitch-effect">
@@ -84,7 +79,7 @@
                 
                 <div class="hero-media">
                     <div class="media-placeholder">
-                        <img src="images/band-hero-imag.jpg" alt="BMI" class="hero-image">
+                        <img src="images/band-hero-image.jpg" alt="BMI" class="hero-image">
                     </div>
                 </div>
             </div>
@@ -158,63 +153,87 @@
                     <span class="title-text">Discografia</span>
                     <span class="title-underline"></span>
                 </h2>
-                
+
                 <div class="music-content">
                     <div class="featured-album">
-                        <div class="album-cover">
+                        <div class="album-cover" onclick="toggleTrackList()">
                             <img src="images/ABISMO-COVER.jpg" alt="A.B.I.S.M.O" class="album-image">
                             <div class="play-overlay">
-                                <button class="play-button" aria-label="Play Album" onclick="togglePlay()">▶</button>
+                                <button type="button" class="play-button" aria-label="Play Album" onclick="togglePlay(event)">▶</button>
                             </div>
                         </div>
-                        
-                        <audio id="albumPlayer" src="music/FUNERAL.mp3"></audio>
-                        
-                        
+
+                        <!-- player (sem controls visíveis) -->
+                        <audio id="albumPlayer" src="music/FUNERAL.mp3" preload="metadata"></audio>
+
                         <div class="album-info">
                             <h3 class="album-title">A.B.I.S.M.O</h3>
                             <p class="album-year">2013</p>
                             <p class="album-description">
                                 Nosso álbum mais sombrio, chegando finalmente à todas as plataformas digitais em setembro de 2025.
                             </p>
-                            
+
+                            <!-- Lista de faixas (escondida por classe) -->
+                            <div id="abismoTracks" class="track-list hidden">
+                                <ul>
+                                    <li onclick="playTrack('music/FUNERAL.mp3', 'Irvin - Funeral')">1. Funeral</li>
+                                    <li onclick="playTrack('music/FAIXA2.mp3', 'Irvin - Faixa 2')">2. Faixa 2</li>
+                                    <li onclick="playTrack('music/FAIXA3.mp3', 'Irvin - Faixa 3')">3. Faixa 3</li>
+                                    <li onclick="playTrack('music/FAIXA4.mp3', 'Irvin - Faixa 4')">4. Faixa 4</li>
+                                </ul>
+                                <p id="nowPlayingAbismo" class="now-playing"></p>
+                            </div>
+
+                            <!-- streaming links -->
                             <div class="streaming-links">
                                 <a href="https://www.youtube.com/@IrvinOficiall" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                                     <i class="fab fa-youtube fa-2x"></i>
                                 </a>
-                                
                                 <a href="https://www.instagram.com/irvinoficiall/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                     <i class="fab fa-instagram fa-2x"></i>
                                 </a>
-                                
                                 <a href="https://open.spotify.com/artist/6kZVn2VHklgPOGC2qt3j5S" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
                                     <i class="fab fa-spotify fa-2x"></i>
                                 </a>
-                                
                                 <a href="https://music.apple.com/br/artist/old-irvin/1712736123" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
                                     <i class="fab fa-apple fa-2x"></i>
                                 </a>
-                                
                             </div>
                         </div>
                     </div>
                     
                     <div class="discography-grid">
-                        <div class="album-card">
+                        <div class="album-card" onclick="openAlbumModal()">
                             <img src="images/ep1.jpg" alt="EP IRVIN" class="album-cover-small">
                             <h4 class="album-title-small">IRVIN (EP)</h4>
                             <p class="album-year-small">2010</p>
-                        </div>
-                        
-                        <div class="album-card">
-                            <img src="images/ep2.png" alt="Olho por Olho, Dente por Dente" class="album-cover-small">
-                            <h4 class="album-title-small">Olho por Olho, Dente por Dente (EP)</h4>
-                            <p class="album-year-small">2014</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Modal do álbum -->
+        <div id="albumModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAlbumModal()">&times;</span>
+                <h2>IRVIN (EP) - 2010</h2>
+                <ul>
+                    <li>01 - Intro</li>
+                    <li>02 - Meu Ódio</li>
+                    <li>03 - Passagem, pt.1</li>
+                    <li>04 - Escolhas Erradas</li>
+                    <li>05 - Passagem, pt.2</li>
+                    <li>06 - Flores Secam ao Me Ouvir</li>
+                    <li>07 - Viver em Paz</li>
+                    <li>08 - Projeto Destruição</li>
+                </ul>
+                <audio controls>
+                    <source src="music/IrviN09 - Viver Em Paz V2.mp3" type="audio/mpeg">
+                    Seu navegador não suporta áudio HTML5.
+                </audio>
+            </div>
+        </div>
 
         <!-- Tour Dates Section -->
         <section id="tour" class="tour-section">
@@ -262,7 +281,7 @@
                     </div>
                     
                     <div class="gallery-item">
-                        <img src="images/KONFOTOGRAFIA-40.jpg" alt="Band Photo 2" class="gallery-image">
+                        <img src="images/.jpg" alt="Band Photo 2" class="gallery-image">
                         <div class="gallery-overlay">
                             <span class="gallery-caption">Nos Bastidores</span>
                         </div>
@@ -310,7 +329,6 @@
                                 <a href="https://music.apple.com/br/artist/old-irvin/1712736123" class="social-link apple" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
                                     <i class="fab fa-apple"></i>
                                 </a>
-                                
                             </div>
                         </div>
                     </div>
@@ -370,7 +388,7 @@
             
             <div class="footer-bottom">
                 <p class="copyright">
-                    © 2024 IrviN. Todos os direitos reservados.
+                    © 2025 IrviN. Todos os direitos reservados.
                 </p>
             </div>
         </div>
