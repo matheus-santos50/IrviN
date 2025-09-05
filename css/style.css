@@ -88,6 +88,7 @@ body {
     object-fit: cover;
     opacity: 0.3;
     filter: grayscale(100%) contrast(1.2) brightness(0.8);
+    z-index: -2;
 }
 
 /* ===================================
@@ -1236,12 +1237,35 @@ textarea:focus {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
     .vhs-background {
-        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Fica sobre o vídeo, mas atrás do conteúdo */
+        pointer-events: none;
     }
     
-    .static-overlay,
-    .scanlines {
-        display: none;
+    
+    .static-overlay {
+        width: 100%;
+        height: 100%;
+        background: url('images/static.png') repeat;
+        opacity: 0.05;
     }
+    
+    .scanlines {
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.05) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+        pointer-events: none;
+    }
+    
 }
 

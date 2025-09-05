@@ -621,7 +621,7 @@ document.head.appendChild(style);
 
 console.log('🎸 All interactive effects initialized - Ready to rock! 🎸');
 
-const player = documennavMenut.getElementById("albumPlayer");
+const player = document.getElementById("albumPlayer");
 const playButton = document.querySelector(".play-button");
 
 function togglePlay() {
@@ -633,3 +633,4 @@ function togglePlay() {
         playButton.textContent = "▶"; // volta para play
     }
 }
+
