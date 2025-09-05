@@ -681,8 +681,8 @@ section:nth-child(even) {
     object-fit: cover;
     border-radius: 5px;
     filter: grayscale(100%);
-    margin-bottom: 1rem;
-    transition: filter 0.3s ease;
+    margin-bottom: 2rem;
+    transition: filter 0.4s ease;
 }
 
 .album-cover-small:hover {

@@ -621,3 +621,15 @@ document.head.appendChild(style);
 
 console.log('🎸 All interactive effects initialized - Ready to rock! 🎸');
 
+const player = document.getElementById("albumPlayer");
+const playButton = document.querySelector(".play-button");
+
+function togglePlay() {
+    if (player.paused) {
+        player.play();
+        playButton.textContent = "⏸"; // troca para pause
+    } else {
+        player.pause();
+        playButton.textContent = "▶"; // volta para play
+    }
+}
