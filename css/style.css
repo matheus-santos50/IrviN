@@ -1266,6 +1266,29 @@ textarea:focus {
         );
         pointer-events: none;
     }
+    .social-link {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 5px;
+}
     
+    .social-link.youtube {
+        background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/18910700-de-logotipo-do-youtube-de-icone-do-youtube-gratis-de-simbolo-do-youtube-gratis-vetor.jpg');
+    }
+    .social-link.instagram {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png');
+    }
+    
+    .social-link.spotify {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/512px-Spotify_logo_without_text.svg.png');
+    }
+    
+    .social-link.apple {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/512px-Apple_logo_black.svg.png');
+    }
 }
 

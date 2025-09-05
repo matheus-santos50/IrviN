@@ -153,10 +153,10 @@ function initVHSEffects() {
     if (vhsBackground) {
         // Random VHS glitch intervals
         setInterval(() => {
-            if (Math.random() < 0.1) { // 10% chance every interval
+            if (Math.random() < 0.3) { // 10% chance every interval
                 addVHSGlitch();
             }
-        }, 2000);
+        }, 500);
         
         // Intensify effects on user interaction
         document.addEventListener('click', function() {
@@ -171,14 +171,21 @@ function initVHSEffects() {
 
 function addVHSGlitch() {
     const vhsBackground = document.getElementById('vhsBackground');
-    if (vhsBackground) {
-        vhsBackground.style.filter = 'hue-rotate(90deg) saturate(2)';
-        vhsBackground.style.transform = 'translate(' + (Math.random() * 4 - 2) + 'px, ' + (Math.random() * 4 - 2) + 'px)';
-        
+    if (!vhsBackground) return;
+
+    // Cria 3 relâmpagos rápidos em sequência
+    for (let i = 0; i < 3; i++) {
         setTimeout(() => {
-            vhsBackground.style.filter = '';
-            vhsBackground.style.transform = '';
-        }, 100);
+            // Aplica efeito de cor e deslocamento
+            vhsBackground.style.filter = 'hue-rotate(' + (Math.random() * 360) + 'deg) saturate(2)';
+            vhsBackground.style.transform = 'translate(' + (Math.random() * 8 - 4) + 'px, ' + (Math.random() * 8 - 4) + 'px)';
+
+            // Limpa efeito rapidamente (80ms)
+            setTimeout(() => {
+                vhsBackground.style.filter = '';
+                vhsBackground.style.transform = '';
+            }, 80);
+        }, i * 100); // 100ms entre cada relâmpago
     }
 }
 
