@@ -318,6 +318,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    z-index: 1001;
 }
 
 .hamburger-line {
@@ -1166,11 +1167,11 @@ section:nth-child(even) {
     }
 }
 
-/* Mobile Styles */
+/* Mobile Styles - CORREÇÃO DO MENU MOBILE */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 70px; /* ← CORRIGIDO: altura do header */
         left: 0;
         width: 100%;
         background: rgba(0, 0, 0, 0.95);
@@ -1181,6 +1182,8 @@ section:nth-child(even) {
         transition: transform 0.3s ease;
         border-top: 1px solid #333;
         z-index: 999;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1189,6 +1192,7 @@ section:nth-child(even) {
     
     .mobile-menu-toggle {
         display: flex;
+        z-index: 1000;
     }
     
     .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
@@ -1335,24 +1339,3 @@ textarea:focus {
         display: inline-block;
         width: 50px;
         height: 50px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: 5px;
-    }
-    
-    .social-link.youtube {
-        background-image: url('https://static.vecteezy.com/ti/vetor-gratis/p1/18910700-de-logotipo-do-youtube-de-icone-do-youtube-gratis-de-simbolo-do-youtube-gratis-vetor.jpg');
-    }
-    .social-link.instagram {
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png');
-    }
-    
-    .social-link.spotify {
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/512px-Spotify_logo_without_text.svg.png');
-    }
-    
-    .social-link.apple {
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/512px-Apple_logo_black.svg.png');
-    }
-}
