@@ -1074,22 +1074,27 @@ section:nth-child(even) {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1rem;
-        transition: top 0.3s ease;
-        border-top: 1px solid #333;
+    @media (max-width: 768px) {
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            padding: 5rem 2rem 2rem; /* ajusta o topo para não ficar escondido atrás do header */
+            gap: 1rem;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            border-top: 1px solid #333;
+            z-index: 9999;
+        }
+    
+        .nav-menu.active {
+            transform: translateY(0);
+        }
     }
     
-    .nav-menu.active {
-        top: 100%;
-    }
     
     .mobile-menu-toggle {
         display: flex;

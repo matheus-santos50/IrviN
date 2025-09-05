@@ -23,23 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
    MOBILE NAVIGATION
    ================================== */
 
-function initMobileMenu() {
+   function initMobileMenu() {
     const mobileToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
     
     if (mobileToggle && navMenu) {
         // Toggle mobile menu
-        mobileToggle.addEventListener('click', function() {
+        mobileToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // evita que o clique borre ao clicar no botão
             mobileToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
-            
-            // Add VHS glitch effect when opening menu
+
             if (navMenu.classList.contains('active')) {
-                addGlitchEffect(navMenu, 300);
+                addGlitchEffect(navMenu, 300); // efeito VHS ao abrir
             }
         });
-        
+
         // Close menu when clicking nav links
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -47,7 +47,7 @@ function initMobileMenu() {
                 navMenu.classList.remove('active');
             });
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
@@ -621,7 +621,7 @@ document.head.appendChild(style);
 
 console.log('🎸 All interactive effects initialized - Ready to rock! 🎸');
 
-const player = document.getElementById("albumPlayer");
+const player = documennavMenut.getElementById("albumPlayer");
 const playButton = document.querySelector(".play-button");
 
 function togglePlay() {
