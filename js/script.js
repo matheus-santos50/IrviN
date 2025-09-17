@@ -292,46 +292,46 @@ function addGlitchEffect(element, duration = 200) {
    FORM HANDLING
    ================================== */
 
-function initFormHandling() {
-    const contactForm = document.getElementById('contactForm');
+// function initFormHandling() {
+//     const contactForm = document.getElementById('contactForm');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+//     if (contactForm) {
+//         contactForm.addEventListener('submit', function(e) {
+//             e.preventDefault();
             
-            // Add VHS effect during form submission
-            addStaticEffect(1000);
-            addGlitchEffect(contactForm, 300);
+//             // Add VHS effect during form submission
+//             addStaticEffect(1000);
+//             addGlitchEffect(contactForm, 300);
             
-            // Simulate form submission
-            const submitButton = contactForm.querySelector('.form-submit');
-            const originalText = submitButton.textContent;
+//             // Simulate form submission
+//             const submitButton = contactForm.querySelector('.form-submit');
+//             const originalText = submitButton.textContent;
             
-            submitButton.textContent = 'ENVIANDO...';
-            submitButton.disabled = true;
+//             submitButton.textContent = 'ENVIANDO...';
+//             submitButton.disabled = true;
             
-            setTimeout(() => {
-                submitButton.textContent = 'MENSAGEM ENVIADA!';
-                submitButton.style.background = '#00ff00';
+//             setTimeout(() => {
+//                 submitButton.textContent = 'MENSAGEM ENVIADA!';
+//                 submitButton.style.background = '#00ff00';
                 
-                setTimeout(() => {
-                    submitButton.textContent = originalText;
-                    submitButton.style.background = '';
-                    submitButton.disabled = false;
-                    contactForm.reset();
-                }, 2000);
-            }, 1500);
-        });
+//                 setTimeout(() => {
+//                     submitButton.textContent = originalText;
+//                     submitButton.style.background = '';
+//                     submitButton.disabled = false;
+//                     contactForm.reset();
+//                 }, 2000);
+//             }, 1500);
+//         });
         
-        // Add glitch effects to form inputs on focus
-        const formInputs = contactForm.querySelectorAll('input, textarea');
-        formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                addGlitchEffect(this, 100);
-            });
-        });
-    }
-}
+//         // Add glitch effects to form inputs on focus
+//         const formInputs = contactForm.querySelectorAll('input, textarea');
+//         formInputs.forEach(input => {
+//             input.addEventListener('focus', function() {
+//                 addGlitchEffect(this, 100);
+//             });
+//         });
+//     }
+// }
 
 /* ===================================
    AUDIO CONTROLS
@@ -640,6 +640,8 @@ function togglePlay(event) {
     const tl = document.getElementById('abismoTracks');
     const now = document.getElementById('nowPlayingAbismo');
 
+
+
     if (player.paused) {
         player.play();
         if (tl) tl.style.display = 'block';
@@ -651,20 +653,8 @@ function togglePlay(event) {
     }
 }
 
-// Toca faixa específica
-function playTrack(src, title) {
-    if (!player) return;
-    player.src = src;
-    player.play();
 
-    const now = document.getElementById('nowPlayingAbismo');
-    if (now) now.textContent = 'Você está ouvindo: ' + title;
 
-    const tl = document.getElementById('abismoTracks');
-    if (tl) tl.style.display = 'block';
-
-    if (playButton) playButton.textContent = '⏸';
-}
 
 // Modal do álbum
 function openAlbumModal() {
@@ -681,9 +671,56 @@ window.onclick = function(event) {
     if (event.target === modal) modal.style.display = 'none';
 }
 
-// Alterna exibição da lista de faixas do álbum A.B.I.S.M.O
-function toggleTrackList() {
-    const tl = document.getElementById('abismoTracks');
-    if (!tl) return;
-    tl.style.display = (tl.style.display === 'block') ? 'none' : 'block';
+// Lista de players existentes
+const players = [
+    { playerId: 'albumPlayer', tracklistId: 'abismoTracks', buttonId: 'albumPlay', nowPlayingId: 'nowPlayingAbismo' },
+    { playerId: 'epPlayer', tracklistId: 'epTracks', buttonId: 'epPlay', nowPlayingId: 'nowPlayingep' }
+];
+
+// Play / pause genérico atualizado
+function togglePlay(event, playerId, tracklistId, nowPlayingId) {
+    event.stopPropagation();
+
+    const player = document.getElementById(playerId);
+    const trackList = document.getElementById(tracklistId);
+    const button = event.currentTarget;
+    const nowPlaying = document.getElementById(nowPlayingId);
+
+    if (!player) return;
+
+    // Pausar e fechar qualquer outro player que estiver tocando
+    players.forEach(p => {
+        if (p.playerId !== playerId) {
+            const otherPlayer = document.getElementById(p.playerId);
+            const otherTrackList = document.getElementById(p.tracklistId);
+            const otherButton = document.getElementById(p.buttonId);
+            const otherNowPlaying = document.getElementById(p.nowPlayingId);
+
+            if (otherPlayer && !otherPlayer.paused) {
+                otherPlayer.pause();
+                if (otherTrackList) otherTrackList.classList.add('hidden');
+                if (otherButton) otherButton.textContent = '▶';
+                if (otherNowPlaying) otherNowPlaying.textContent = '';
+            }
+        }
+    });
+
+    // Tocar ou pausar o player atual
+    if (player.paused) {
+        player.play();
+        if (trackList) trackList.classList.remove('hidden');
+        if (button) button.textContent = '⏸';
+    } else {
+        player.pause();
+        if (trackList) trackList.classList.add('hidden');
+        if (button) button.textContent = '▶';
+        if (nowPlaying) nowPlaying.textContent = '';
+    }
+
+    // Fechar tracklist ao terminar a música
+    player.onended = () => {
+        if (trackList) trackList.classList.add('hidden');
+        if (button) button.textContent = '▶';
+        if (nowPlaying) nowPlaying.textContent = '';
+    };
 }

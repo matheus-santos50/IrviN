@@ -30,7 +30,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <img src="images/VETOR-BB.png" alt="Band Logo" class="logo-img">
+                    <img src="images/VETOR-BB.jpg" alt="Band Logo" class="logo-img">
                     <span class="logo-text">IRVIN</span>
                 </div>
                 
@@ -107,8 +107,8 @@
                             <h3 class="members-title">Os Membros</h3>
                             <div class="members-grid">
                                 <div class="member-card">
-                                    <img src="images/seth.jpg" alt="Seth" class="member-photo">
-                                    <h4 class="member-name">Seth (Fábio Azzano)</h4>
+                                    <img src="images/sefh.jpg" alt="Sefh" class="member-photo">
+                                    <h4 class="member-name">Sefh (Fábio Azzano)</h4>
                                     <p class="member-role">Vocal</p>
                                 </div>
                                 
@@ -125,13 +125,13 @@
                                 </div>
                                 
                                 <div class="member-card">
-                                    <img src="images/lenyn.jpg" alt="Lenyn Pitta" class="member-photo">
+                                    <img src="images/leny.jpg" alt="Lenyn Pitta" class="member-photo">
                                     <h4 class="member-name">Lenyn Pitta</h4>
                                     <p class="member-role">Guitarra</p>
                                 </div>
 
                                 <div class="member-card">
-                                    <img src="images/lester.jpg" alt="Lester Traguetta" class="member-photo">
+                                    <img src="images/lest.jpg" alt="Lester Traguetta" class="member-photo">
                                     <h4 class="member-name">Lester Traguetta</h4>
                                     <p class="member-role">Bateria</p>
                                 </div>
@@ -140,7 +140,7 @@
                     </div>
                     
                     <div class="bio-image">
-                        <img src="images/band-group-photo.jpg" alt="BGP" class="group-photo">
+                        <img src="images/bandv.jpg" alt="BGP" class="group-photo">
                     </div>
                 </div>
             </div>
@@ -156,10 +156,10 @@
 
                 <div class="music-content">
                     <div class="featured-album">
-                        <div class="album-cover" onclick="toggleTrackList()">
+                        <div class="album-cover" onclick="toggleTrackList('abismoTracks')">
                             <img src="images/ABISMO-COVER.jpg" alt="A.B.I.S.M.O" class="album-image">
                             <div class="play-overlay">
-                                <button type="button" class="play-button" aria-label="Play Album" onclick="togglePlay(event)">▶</button>
+                                <button type="button" class="play-button" onclick="togglePlay(event, 'albumPlayer', 'abismoTracks', 'nowPlayingAbismo')">▶</button>
                             </div>
                         </div>
 
@@ -199,48 +199,72 @@
                                 <a href="https://www.instagram.com/irvinoficiall/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                     <i class="fab fa-instagram fa-2x"></i>
                                 </a>
-                                <a href="https://open.spotify.com/artist/6kZVn2VHklgPOGC2qt3j5S" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                                <a href="https://musicpro.live/s/7900279481193" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
                                     <i class="fab fa-spotify fa-2x"></i>
                                 </a>
-                                <a href="https://music.apple.com/br/artist/old-irvin/1712736123" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+                                <a href="https://musicpro.live/s/7900279481193" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
                                     <i class="fab fa-apple fa-2x"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="discography-grid">
-                        <div class="album-card" onclick="openAlbumModal()">
-                            <img src="images/ep1.jpg" alt="EP IRVIN" class="album-cover-small">
-                            <h4 class="album-title-small">IRVIN (EP)</h4>
-                            <p class="album-year-small">2010</p>
+                    <!-- EP -->
+
+                    <div class="music-content">
+                    <div class="featured-album">
+                        <div class="album-cover" onclick="toggleTrackList('epTracks')">
+                            <img src="images/ep1.jpg" alt="EP" class="album-image">
+                            <div class="play-overlay">
+                                <button type="button" class="play-button" id="epPlay" onclick="togglePlay(event, 'epPlayer', 'epTracks', 'nowPlayingep')">▶</button>
+
+                                
+                            </div>
+                        </div>
+
+                        <!-- player (sem controls visíveis) -->
+                        <audio id="epPlayer" src="music/Escolhas Erradas.mp3"></audio>
+
+
+                        <div class="album-info">
+                            <h3 class="album-title">IrviN [EP]</h3>
+                            <p class="album-year">2010</p>
+                            <p class="album-description">
+                                Após muitos feedbacks positivos de musicas lançadas nos primeiros anos da banda, o EP foi composto dessas faixas já publicadas e algumas inéditas, com a promessa de algo grandioso no futuro.
+                            </p>
+
+                            <!-- Lista de faixas (escondida por classe) -->
+                            <div id="epTracks" class="track-list hidden">
+                                <ul>
+                                    <li onclick="playTrack('epPlayer','epTracks','Irvin - Intro','music/FAIXA1.mp3','epPlay','nowPlayingep')">01 - Intro</li>
+                                    <li onclick="playTrack('music/FAIXA2.mp3', 'Irvin - Meu Ódio')">02 - Meu Ódio</li>
+                                    <li onclick="playTrack('music/FAIXA3.mp3', 'Irvin - Passagem, pt.1')">03. Passagem, pt.1</li>
+                                    <li onclick="playTrack('music/FUNERAL.mp3', 'Irvin - Funeral')">04. Escolhas Erradas</li>
+                                    <li onclick="playTrack('music/FAIXA3.mp3', 'Irvin - Passagem, pt.2')">05. Passagem, pt.2</li>
+                                    <li onclick="playTrack('music/FUNERAL.mp3', 'Irvin - Flores Secam ao Me Ouvir')">06. Flores Secam ao Me Ouvir</li>
+                                    <li onclick="playTrack('music/FUNERAL.mp3', 'Irvin -  Viver em Paz')">07. Viver em Paz</li>
+                                    <li onclick="playTrack('music/FUNERAL.mp3', 'Irvin - Projeto Destruição')">08. Projeto Destruição</li>
+                                </ul>
+                                <p id="nowPlayingep" class="now-playing"></p>
+                            </div>
+
+                            <!-- streaming links -->
+                            <div class="streaming-links">
+                                <a href="https://www.youtube.com/watch?v=P3Rj4GjWgmc&list=OLAK5uy_nwVF-tBVPEsKChksETgq2zFc9Kps9YScA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                    <i class="fab fa-youtube fa-2x"></i>
+                                </a>
+                                <a href="https://www.instagram.com/irvinoficiall/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <i class="fab fa-instagram fa-2x"></i>
+                                </a>
+                                <a href="https://open.spotify.com/intl-pt/album/0Qykc9EZb1iZ4C9HdK4m00?si=MGfq3X0wQVW3dG-9a2LSqg" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                                    <i class="fab fa-spotify fa-2x"></i>
+                                </a>
+                                <a href="https://music.apple.com/br/album/irvin/1713278020" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+                                    <i class="fab fa-apple fa-2x"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Modal do álbum -->
-        <div id="albumModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeAlbumModal()">&times;</span>
-                <h2>IRVIN (EP) - 2010</h2>
-                <ul>
-                    <li>01 - Intro</li>
-                    <li>02 - Meu Ódio</li>
-                    <li>03 - Passagem, pt.1</li>
-                    <li>04 - Escolhas Erradas</li>
-                    <li>05 - Passagem, pt.2</li>
-                    <li>06 - Flores Secam ao Me Ouvir</li>
-                    <li>07 - Viver em Paz</li>
-                    <li>08 - Projeto Destruição</li>
-                </ul>
-                <audio controls>
-                    <source src="music/IrviN09 - Viver Em Paz V2.mp3" type="audio/mpeg">
-                    Seu navegador não suporta áudio HTML5.
-                </audio>
-            </div>
-        </div>
 
         <!-- Tour Dates Section -->
         <section id="tour" class="tour-section">
@@ -275,29 +299,29 @@
         <section id="gallery" class="gallery-section">
             <div class="container">
                 <h2 class="section-title">
-                    <span class="title-text">Memórias</span>
+                    <span class="title-text">Galeria</span>
                     <span class="title-underline"></span>
                 </h2>
                 
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="images/@KONFOTOGRAFIA-223.jpg" alt="Band Photo 1" class="gallery-image">
+                        <img src="images/bandh1.jpg" alt="Band Photo 1" class="gallery-image">
                         <div class="gallery-overlay">
-                            <span class="gallery-caption">Ao Vivo</span>
+                            <span class="gallery-caption"></span>
                         </div>
                     </div>
                     
                     <div class="gallery-item">
-                        <img src="images/.jpg" alt="Band Photo 2" class="gallery-image">
+                        <img src="images/bandh.jpg" alt="Band Photo 2" class="gallery-image">
                         <div class="gallery-overlay">
-                            <span class="gallery-caption">Nos Bastidores</span>
+                            <span class="gallery-caption"></span>
                         </div>
                     </div>
                     
                     <div class="gallery-item">
-                        <img src="images/gallery-3.jpg" alt="Band Photo 3" class="gallery-image">
+                        <img src="images/bandh2.jpg" alt="Band Photo 3" class="gallery-image">
                         <div class="gallery-overlay">
-                            <span class="gallery-caption">Gravações</span>
+                            <span class="gallery-caption"></span>
                         </div>
                     </div>
                 </div>
@@ -341,29 +365,30 @@
                     </div>
                     
                     <div class="contact-form">
-                        <form class="horror-form" id="contactForm">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Nome</label>
-                                <input type="text" id="name" name="name" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" name="email" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject" class="form-label">Assunto</label>
-                                <input type="text" id="subject" name="subject" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message" class="form-label">Mensagem</label>
-                                <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="form-submit">Enviar Mensagem</button>
-                        </form>
+                        <form class="horror-form" id="contactForm" action="send.php" method="POST">
+    <div class="form-group">
+        <label for="name" class="form-label">Nome</label>
+        <input type="text" id="name" name="name" class="form-input" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-input" required>
+    </div>
+
+    <div class="form-group">
+        <label for="subject" class="form-label">Assunto</label>
+        <input type="text" id="subject" name="subject" class="form-input" required>
+    </div>
+
+    <div class="form-group">
+        <label for="message" class="form-label">Mensagem</label>
+        <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="form-submit">Enviar Mensagem</button>
+</form>
+
                     </div>
                 </div>
             </div>
