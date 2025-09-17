@@ -231,7 +231,7 @@ body {
 .main-header {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 10;
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
@@ -1170,7 +1170,7 @@ section:nth-child(even) {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 70px; /* ← CORRIGIDO: altura do header */
+        top: 70px;
         left: 0;
         width: 100%;
         background: rgba(0, 0, 0, 0.95);
