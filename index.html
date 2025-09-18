@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site oficial da banda">
     <title><| IRVIN | SITE OFICIAL | OLD IRVIN | SITE OFICIAL |</title>
+    <meta name="description" content="Site oficial da banda Irvin. Rock e Metalcore.">
+    <meta name="keywords" content="IRVIN, irvin, Old Irvin, banda, rock, metalcore, horror, terror, música, Halloween, Shows, metal, Brasil, Abismo, Biografia">
+    <meta name="author" content="IRVIN, Old Irvin">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://open.spotify.com/intl-pt/artist/6kZVn2VHklgPOGC2qt3j5S">
+    <meta property="og:title" content="IRVIN - Banda de Rock/Metalcore | Site Oficial">
+    <meta property="og:description" content="Site oficial da banda IRVIN. Rock e Metalcore com elementos de terror e horror, formada em 2008. Ouça nossa discografia e confira os próximos shows.">
+    <link rel="preload" href="css/style.css" as="style" 
+    onload="this.onload=null;this.rel=\'stylesheet\'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
     
-    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts for Horror Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Butcherman&family=Eater&family=Metal+Mania&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- VHS Static Background Animation Container -->
     <div class="vhs-background" id="vhsBackground">
         <div class="static-overlay"></div>
         <div class="scanlines"></div>
     </div>
 
-    <!-- Navigation Header -->
     <header class="main-header" id="mainHeader">
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <img src="images/VETOR-BB.jpg" alt="Band Logo" class="logo-img">
-                    <span class="logo-text">IRVIN</span>
-                </div>
+                <ul class="logo">
+                    <img src="images/VETOR-BB.webp" alt="Band Logo" class="logo-img">
+                    <li><a href="#home" class="logo-text">IrviN</a></li>
+                </ul>
                 
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
                     <span class="hamburger-line"></span>
@@ -42,7 +48,7 @@
                     <li><a href="#bio" class="nav-link">Bio</a></li>
                     <li><a href="#music" class="nav-link">Música</a></li>
                     <li><a href="#tour" class="nav-link">Shows</a></li>
-                    <li><a href="#gallery" class="nav-link">Memórias</a></li>
+                    <li><a href="#gallery" class="nav-link">Galeria</a></li>
                     <li><a href="#contact" class="nav-link">Contato</a></li>
                 </ul>
             </div>
@@ -76,7 +82,7 @@
                 
                 <div class="hero-media">
                     <div class="media-placeholder">
-                        <img src="images/band-hero-image.jpg" alt="BMI" class="hero-image">
+                        <img src="images/band-hero-image.webp" alt="BMI" class="hero-image">
                     </div>
                 </div>
             </div>
@@ -104,31 +110,31 @@
                             <h3 class="members-title">Os Membros</h3>
                             <div class="members-grid">
                                 <div class="member-card">
-                                    <img src="images/sefh.jpg" alt="Sefh" class="member-photo">
+                                    <img src="images/sefh.webp" alt="Sefh" class="member-photo">
                                     <h4 class="member-name">Sefh (Fábio Azzano)</h4>
                                     <p class="member-role">Vocal</p>
                                 </div>
                                 
                                 <div class="member-card">
-                                    <img src="images/luuh.jpg" alt="Luuh Monster" class="member-photo">
+                                    <img src="images/luuh.webp" alt="Luuh Monster" class="member-photo">
                                     <h4 class="member-name">Luuh Monster (Lukas Souza)</h4>
                                     <p class="member-role">Baixo</p>
                                 </div>
                                 
                                 <div class="member-card">
-                                    <img src="images/panda.jpg" alt="Panda Lopes" class="member-photo">
+                                    <img src="images/panda.webp" alt="Panda Lopes" class="member-photo">
                                     <h4 class="member-name">Panda Lopes</h4>
                                     <p class="member-role">Guitarra</p>
                                 </div>
                                 
                                 <div class="member-card">
-                                    <img src="images/leny.jpg" alt="Lenyn Pitta" class="member-photo">
+                                    <img src="images/leny.webp" alt="Lenyn Pitta" class="member-photo">
                                     <h4 class="member-name">Lenyn Pitta</h4>
                                     <p class="member-role">Guitarra</p>
                                 </div>
 
                                 <div class="member-card">
-                                    <img src="images/lest.jpg" alt="Lester Traguetta" class="member-photo">
+                                    <img src="images/lest.webp" alt="Lester Traguetta" class="member-photo">
                                     <h4 class="member-name">Lester Traguetta</h4>
                                     <p class="member-role">Bateria</p>
                                 </div>
@@ -137,7 +143,7 @@
                     </div>
                     
                     <div class="bio-image">
-                        <img src="images/bandv.jpg" alt="BGP" class="group-photo">
+                        <img src="images/bandv.webp" alt="BGP" class="group-photo">
                     </div>
                 </div>
             </div>
@@ -154,7 +160,7 @@
                 <div class="music-content">
                     <div class="featured-album">
                         <div class="album-cover" onclick="toggleTrackList('abismoTracks')">
-                            <img src="images/ABISMO-COVER.jpg" alt="A.B.I.S.M.O" class="album-image">
+                            <img src="images/ABISMO-COVER.webp" alt="A.B.I.S.M.O" class="album-image">
                             <div class="play-overlay">
                                 <button type="button" class="play-button" onclick="togglePlay(event, 'albumPlayer', 'abismoTracks', 'nowPlayingAbismo')">▶</button>
                             </div>
@@ -211,7 +217,7 @@
                     <div class="music-content">
                     <div class="featured-album">
                         <div class="album-cover" onclick="toggleTrackList('epTracks')">
-                            <img src="images/ep1.jpg" alt="EP" class="album-image">
+                            <img src="images/ep1.webp" alt="EP" class="album-image">
                             <div class="play-overlay">
                                 <button type="button" class="play-button" id="epPlay" onclick="togglePlay(event, 'epPlayer', 'epTracks', 'nowPlayingep')">▶</button>
 
@@ -302,21 +308,21 @@
                 
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="images/bandh1.jpg" alt="Band Photo 1" class="gallery-image">
+                        <img src="images/bandh1.webp" alt="Band Photo 1" class="gallery-image">
                         <div class="gallery-overlay">
                             <span class="gallery-caption"></span>
                         </div>
                     </div>
                     
                     <div class="gallery-item">
-                        <img src="images/bandh.jpg" alt="Band Photo 2" class="gallery-image">
+                        <img src="images/bandh.webp" alt="Band Photo 2" class="gallery-image">
                         <div class="gallery-overlay">
                             <span class="gallery-caption"></span>
                         </div>
                     </div>
                     
                     <div class="gallery-item">
-                        <img src="images/bandh2.jpg" alt="Band Photo 3" class="gallery-image">
+                        <img src="images/bandh2.webp" alt="Band Photo 3" class="gallery-image">
                         <div class="gallery-overlay">
                             <span class="gallery-caption"></span>
                         </div>
