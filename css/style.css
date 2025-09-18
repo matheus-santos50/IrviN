@@ -311,26 +311,6 @@ body {
     width: 100%;
 }
 
-/* Mobile Menu Toggle */
-.mobile-menu-toggle {
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    color: #cc0000;
-    position: relative; /* garante que z-index funcione */
-    z-index: 1001; /* acima do menu mobile */}
-
-.hamburger-line {
-    position: relative; /* garante que z-index funcione */
-    z-index: 1001; /* acima do menu mobile */
-    width: 25px;
-    height: 3px;
-    background: #ad1313;
-    margin: 3px 0;
-    transition: 0.3s;
-}
 
 /* ===================================
    HERO SECTION
@@ -1194,13 +1174,28 @@ section:nth-child(even) {
         transform: translateY(0);
         opacity: 1;
     }
-}
+
     
     .mobile-menu-toggle {
-        display: flex;
-        z-index: 1000;
+        display: flex;  /* mostrar no mobile */
+        flex-direction: column;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        color: #cc0000;
+        position: relative;
+        z-index: 1001;
     }
-    
+
+    .hamburger-line {
+        width: 25px;
+        height: 3px;
+        background: #ad1313;
+        margin: 3px 0;
+        transition: 0.3s;
+    }
+}
     .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
@@ -1257,7 +1252,7 @@ section:nth-child(even) {
         width: 90%;
         margin: 20% auto;
     }
-}
+
 
 @media (max-width: 480px) {
     .container {
@@ -1345,3 +1340,5 @@ textarea:focus {
         display: inline-block;
         width: 50px;
         height: 50px;
+    }
+}
